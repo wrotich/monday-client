@@ -5,6 +5,8 @@ import Sidebar from './Sidebar';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import '../index.css';
+import { REACT_APP_MONDAY_API } from '../constants';
+
 
 class App extends Component {
   constructor() {
@@ -15,7 +17,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/boards`)
+    const url = `${REACT_APP_MONDAY_API}/boards`
+    axios.get(url)
     .then(response => {
       this.setState({
         boards: response.data.data.boards
